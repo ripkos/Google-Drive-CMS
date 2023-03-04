@@ -25,6 +25,14 @@ jobs:
     # publishes Blazor project to the Prerender/output folder
     - name: Publish .NET Core Project
       run: dotnet publish "Google Drive CMS/Google Drive CMS.csproj" -c Release -o Prerender/output --nologo
+      
+    # change base tag in all html files to include subfolder
+    - name: Change base tag
+      working-directory: Prerender/output/wwwroot
+      run: |
+        find . -name "*.html" | while read htmlFile; do
+            sed -i 's/<base href="\/"/<base href="\/Google-Drive-CMS\/"/g' $htmlFile
+        done
     
     - name: Add .nojekyll file
       run: touch Prerender/output/wwwroot/.nojekyll
