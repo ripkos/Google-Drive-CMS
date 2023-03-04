@@ -1,4 +1,5 @@
 using Google_Drive_CMS;
+using Google_Drive_CMS.Services.Parsers;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -13,7 +14,8 @@ namespace Google_Drive_CMS
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-
+            builder.Services.AddScoped<DocsParser>();
+            builder.Services.AddScoped<SpreadsheetsParser>();
             await builder.Build().RunAsync();
         }
     }
