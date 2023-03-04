@@ -221,6 +221,10 @@
       "url": "Google Drive CMS.styles.css"
     },
     {
+      "hash": "sha256-VNa9P4IiJ5zCg\/yn0PFawufgXM\/CBIIMIAVE6rlMsOE=",
+      "url": "404.html"
+    },
+    {
       "hash": "sha256-10KEeWxsgry5D9LUZc0K86lpIg9RcWdyyBB5sXq6Ypk=",
       "url": "css\/app.css"
     },
@@ -281,7 +285,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-IfvjHSqixGrGQqOmyEocQx\/o2x\/byf\/RHWko6nn6DVA=",
+      "hash": "sha256-G1SFZUz\/jKwLvH2iPbPlgHOCgGrLxLcteQ9bM3gROeo=",
       "url": "index.html"
     },
     {
@@ -293,5 +297,5 @@
       "url": "sample-data\/weather.json"
     }
   ],
-  "version": "SG+PunCl"
+  "version": "xpzA7Mhm"
 };
