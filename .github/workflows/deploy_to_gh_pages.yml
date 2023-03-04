@@ -23,20 +23,6 @@ jobs:
     - name: Publish .NET Core Project
       run: dotnet publish "Google Drive CMS/Google Drive CMS.csproj" -c Release -o Prerender/output --nologo
     
-    # Use NodeJS react-snap utitility to prerender static website
-    - name: prerender Blazor client
-      working-directory: Prerender
-      run: npx react-snap
-    
-    # change base tag in all html files to include subfolder
-    #- name: Change base tag
-    #  working-directory: Prerender/output/wwwroot
-    #  run: |
-    #    find . -name "*.html" | while read htmlFile; do
-    #        sed -i 's/<base href="\/"/<base href="\/main\/"/g' $htmlFile
-    #        sed -i 's/<script type="text\/javascript">var Module; window.__wasmmodulecallback__(); delete window.__wasmmodulecallback__;<\/script><script src="_framework\/dotnet.5.0.10.js" defer="" integrity="sha256-kEksXZY\/UBMxUS3gBNT0F8u0OTyPTUHYKBY0XBLEF50=" crossorigin="anonymous"><\/script>//g' $htmlFile
-    #    done
-    # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
     - name: Add .nojekyll file
       run: touch Prerender/output/wwwroot/.nojekyll
       
