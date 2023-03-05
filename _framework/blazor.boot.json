@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "Google Drive CMS.dll": "sha256-GzngUpBtuVBUtGqQ\/SmL4KzVpAZCHjdl4KALZpEUgWI=",
+      "Google Drive CMS.dll": "sha256-PeVGyAM29W4cZ89el9z7ftMI3V73GQumqDnMFTEkzzQ=",
       "HtmlAgilityPack.dll": "sha256-r+uKTOIYhkIOhMEphGMUjucjjrn5w51+glCGs1DIOMg=",
       "Microsoft.AspNetCore.Components.dll": "sha256-l\/2+4pReEWAnBc4448DYWHu3wP9K65aK6dhbXeu5B4U=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-ZvB65TF6Tix6kJ7DpZLqlclEGauA8yT7fm7zhj+YQNM=",
