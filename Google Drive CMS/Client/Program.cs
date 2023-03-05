@@ -1,9 +1,8 @@
-using Google_Drive_CMS;
 using Google_Drive_CMS.Services.Parsers;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
-namespace Google_Drive_CMS
+namespace Google_Drive_CMS.Client
 {
     public class Program
     {

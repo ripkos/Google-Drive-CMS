@@ -5,9 +5,6 @@ namespace Google_Drive_CMS.Services.Parsers
     {
 
         private readonly HttpClient client;
-        public SpreadsheetsParser()
-        {
-        }
         public SpreadsheetsParser(HttpClient httpClient) {
             client = httpClient;
         }
@@ -18,12 +15,12 @@ namespace Google_Drive_CMS.Services.Parsers
         public async Task<List<string[]>> GetDataFromSpreadsheetsAsync(string url)
         {
             var list = new List<string[]>();
-            string responseBody = await client.GetStringAsync(url);
-            string[] splitted = responseBody.Split('\n');
-            foreach(string line in splitted)
+            var responseBody = await client.GetStringAsync(url);
+            var split = responseBody.Split('\n');
+            foreach(var line in split)
             {
-                string[] values = Regex().Split(line);
-                for(int i=0; i<values.Length; i++)
+                var values = Regex().Split(line);
+                for(var i=0; i<values.Length; i++)
                 {
                     if(values[i] != string.Empty && values[i].StartsWith("\""))
                     {
