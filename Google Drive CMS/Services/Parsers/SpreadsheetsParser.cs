@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 namespace Google_Drive_CMS.Services.Parsers
 {
-    public class SpreadsheetsParser
+    public partial class SpreadsheetsParser
     {
 
         private readonly HttpClient client;
@@ -22,7 +22,7 @@ namespace Google_Drive_CMS.Services.Parsers
             string[] splitted = responseBody.Split('\n');
             foreach(string line in splitted)
             {
-                string[] values = Regex.Split(line, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+                string[] values = Regex().Split(line);
                 for(int i=0; i<values.Length; i++)
                 {
                     if(values[i] != string.Empty && values[i].StartsWith("\""))
@@ -34,5 +34,8 @@ namespace Google_Drive_CMS.Services.Parsers
             }
             return list;
         }
+
+        [GeneratedRegex(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)")]
+        private static partial Regex Regex();
     }
 }

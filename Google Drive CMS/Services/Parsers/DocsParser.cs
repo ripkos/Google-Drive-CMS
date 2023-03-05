@@ -28,11 +28,15 @@ namespace Google_Drive_CMS.Services.Parsers
             var styleNode = htmlDoc.DocumentNode.SelectSingleNode("//head/style");
             var bodyNode = htmlDoc.DocumentNode.SelectSingleNode("//body");
             var xpath = "//*[self::h1 or self::h2 or self::h3 or self::h4]";
-            List<Tuple<string, string>> headers = new();
-            foreach (var node in htmlDoc.DocumentNode.SelectNodes(xpath))
+            List<(string, string)> headers = new();
+            var nodes = htmlDoc.DocumentNode.SelectNodes(xpath);
+            if(nodes is not null)
             {
-                if(!string.IsNullOrEmpty(node.InnerText))
-                headers.Add(new Tuple<string, string>(node.Id, @""+node.InnerText));
+                foreach (var node in nodes)
+                {
+                    if (!string.IsNullOrEmpty(node?.InnerText ?? ""))
+                        headers.Add(new(node!.Id, @"" + node.InnerText));
+                }
             }
             return new DocsDTO
             {
@@ -50,7 +54,7 @@ namespace Google_Drive_CMS.Services.Parsers
     {
         public string Style { get; set; }
         public string Body { get; set; }
-        public List<Tuple<string,string>> Headers { get; set; }
+        public List<(string,string)> Headers { get; set; }
     }
     
 }

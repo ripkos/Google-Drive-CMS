@@ -30,16 +30,14 @@ else
 
 }
 
-
 @code 
 {
-
     [Parameter]
     public string PageID { get; set; }
     [Inject]
     protected DocsParser docsParser { get; set; }
     DocsDTO doc;
-    bool isLoaded => doc is not null;
+    bool isLoaded => doc is not null || isError;
     bool isError = false;
     [Inject]
     protected SpreadsheetsParser spreadsheetsParser { get; set; }
@@ -55,7 +53,15 @@ else
         isError = string.IsNullOrEmpty(currentLink);
         if (!isError)
         {
-            doc = await docsParser.GetDocsAsync(currentLink);
+            try
+            {
+                doc = await docsParser.GetDocsAsync(currentLink);
+            }
+            catch
+            {
+                isError = true;
+            }
         }
+        StateHasChanged();
     }
 }
