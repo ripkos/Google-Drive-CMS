@@ -1,12 +1,12 @@
 ﻿@page "/docs/{PageID}"
 
-@if (!isLoaded)
+@if (!IsLoaded)
 {
     <span>loading</span>
 }
 else
 {
-    @if (isError)
+    @if (IsError)
     {
         <span>Error 404, Page is missing.</span>
     }
@@ -37,21 +37,21 @@ else
     [Inject]
     protected DocsParser docsParser { get; set; }
     DocsDTO doc;
-    bool isLoaded => doc is not null || isError;
-    bool isError = false;
+    bool IsLoaded => doc is not null || IsError;
+    bool IsError = false;
     [Inject]
     protected SpreadsheetsParser spreadsheetsParser { get; set; }
-    List<string[]> list = new();
+    List<string[]> _list = new();
     protected override async Task OnParametersSetAsync()
     {
-        list = await spreadsheetsParser.GetDataFromSpreadsheetsAsync(SpreadsheetsParser.UrlFromID("1-LoUqfKltw1AI9Dbu05UBsxeTszQ3RMWvPzbN6curac"));
-        if (list.Count > 0)
+        _list = await spreadsheetsParser.GetDataFromSpreadsheetsAsync(SpreadsheetsParser.UrlFromID("1-LoUqfKltw1AI9Dbu05UBsxeTszQ3RMWvPzbN6curac"));
+        if (_list.Count > 0)
         {
-            list.RemoveAt(0);
+            _list.RemoveAt(0);
         }
-        string currentLink = list.FirstOrDefault(ss => ss.Length >= 2 && ss[0] == PageID, new string[] { "", "" })[1];
-        isError = string.IsNullOrEmpty(currentLink);
-        if (!isError)
+        var currentLink = _list.FirstOrDefault(ss => ss.Length >= 2 && ss[0] == PageID, new string[] { "", "" })[1];
+        IsError = string.IsNullOrEmpty(currentLink);
+        if (!IsError)
         {
             try
             {
@@ -59,7 +59,7 @@ else
             }
             catch
             {
-                isError = true;
+                IsError = true;
             }
         }
         StateHasChanged();
